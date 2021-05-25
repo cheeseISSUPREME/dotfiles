@@ -1,0 +1,7 @@
+alias la="ls -al"
+alias rc="source $HOME/.zshrc"
+alias fulldate="date +%A,\ %d\ %b,\ %l:%M\ %p"
+alias g="git"
+alias n="notes"
+alias ns="notes -s"
+alias p="pwd | pbcopy"
