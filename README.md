@@ -1,12 +1,7 @@
 # Kavin's .dotfiles
 
 ## Setup
-1. Clone
-```sh
-git clone git@github.com:kavin25/.dotfiles.git
-```
-
-2. Symlink all files to required places
+1. `curl -s https://raw.githubusercontent.com/kavin25/.dotfiles/setup.sh | sh`
 
 ## Other Resources
 1. [dotco](https://github.com/kavin25/dotco)
