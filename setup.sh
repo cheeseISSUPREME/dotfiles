@@ -18,13 +18,13 @@ backup() {
 symlinkhome() {
 	FILENAME=$1
 
-	ln -s dotfiles/$FILENAME $FILENAME
+	ln -s .dotfiles/$FILENAME $FILENAME
 }
 
 symlinkconfig() {
 	FILENAME=$1
 
-	ln -s dotfiles/$FILENAME .config/$FILENAME
+	ln -s .dotfiles/$FILENAME .config/$FILENAME
 }
 
 backup dotfiles
@@ -35,7 +35,7 @@ backup .config/fish
 backup .config/nvim
 
 echo "cloning dotfiles repo...\n"
-git clone https://github.com/kavin25/.dotfiles dotfiles
+git clone https://github.com/kavin25/.dotfiles .dotfiles
 
 echo "symlinking files...\n"
 symlinkhome .bashrc

@@ -7,14 +7,14 @@ set -U EDITOR "nvim"
 
 set GPG_TTY (tty)
 
-set PATH /usr/local/bin $PATH
-set PATH /usr/local/bin/fish $PATH
-set PATH /usr/bin $PATH
-set PATH /Library/Frameworks/Python.framework/Versions/3.8/bin $PATH
-set PATH /usr/local/opt/util-linux/bin $PATH
-set PATH /Library/flutter/bin $PATH
-set PATH /Library/Taps/homebrew/homebrew-cask/Casks/android-platform-tools.rb $PATH
-set PATH $HOME/.composer/vendor/bin $PATH
+fish_add_path /usr/local/bin
+fish_add_path /usr/local/bin/fish
+fish_add_path /usr/bin
+fish_add_path /Library/Frameworks/Python.framework/Versions/3.8/bin
+fish_add_path /usr/local/opt/util-linux/bin
+fish_add_path /Library/flutter/bin
+fish_add_path /Library/Taps/homebrew/homebrew-cask/Casks/android-platform-tools.rb
+fish_add_path $HOME/.composer/vendor/bin
 
 set LANG "en_US.UTF-8"
 set LC_ALL "en_US.UTF-8"
@@ -27,5 +27,6 @@ set SPACEFISH_USER_SHOW true
 set SPACEFISH_BATTERY_SHOW always
 
 source ~/.dotfiles/aliases.sh
+source ~/.dotfiles/url-env.sh
 
 set -U DOCKERFORMAT "ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
