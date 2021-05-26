@@ -41,7 +41,7 @@ echo "symlinking files...\n"
 symlinkhome .bashrc
 symlinkhome .gitconfig
 symlinkhome .tmux.conf
-symlinkconfig .config/fish
-symlinkconfig .config/nvim
+symlinkconfig fish
+symlinkconfig nvim
 
 echo "done"
