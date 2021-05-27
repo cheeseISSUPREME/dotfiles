@@ -3,6 +3,18 @@ set TERM xterm-256color
 set GOPATH $HOME/go
 set GOBIN $HOME/go/bin
 
+set -x KAVIN_OS ""
+switch (uname)
+  case Linux
+    set -x KAVIN_OS "LINUX"
+    source $HOME/.config/fish/linux.fish
+  case Darwin
+    set -x KAVIN_OS "MACOS"
+    source $HOME/.config/fish/macos.fish
+  case '*'
+    set -x KAVIN_OS "UNKNOWN"
+end
+
 set -U EDITOR "nvim"
 
 set GPG_TTY (tty)
@@ -10,10 +22,7 @@ set GPG_TTY (tty)
 fish_add_path /usr/local/bin
 fish_add_path /usr/local/bin/fish
 fish_add_path /usr/bin
-fish_add_path /Library/Frameworks/Python.framework/Versions/3.8/bin
 fish_add_path /usr/local/opt/util-linux/bin
-fish_add_path /Library/flutter/bin
-fish_add_path /Library/Taps/homebrew/homebrew-cask/Casks/android-platform-tools.rb
 fish_add_path $HOME/.composer/vendor/bin
 
 set LANG "en_US.UTF-8"
