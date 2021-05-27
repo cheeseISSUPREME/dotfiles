@@ -336,3 +336,4 @@ autocmd! User GoyoLeave Limelight!
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips","my_snippets"]
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
+let g:coc_disable_startup_warning = 1
