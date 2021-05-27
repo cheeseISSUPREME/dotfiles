@@ -18,15 +18,16 @@ backup() {
 symlinkhome() {
 	FILENAME=$1
 
-	ln -s .dotfiles/$FILENAME $FILENAME
+	ln -sv ~/.dotfiles/$FILENAME ~/$FILENAME
 }
 
 symlinkconfig() {
 	FILENAME=$1
 
-	ln -s .dotfiles/$FILENAME .config/$FILENAME
+	ln -sv ~/.dotfiles/.config/$FILENAME ~/.config/$FILENAME
 }
 
+backup .hyper.js
 backup dotfiles
 backup .bashrc
 backup .gitconfig
@@ -41,6 +42,7 @@ echo "symlinking files...\n"
 symlinkhome .bashrc
 symlinkhome .gitconfig
 symlinkhome .tmux.conf
+symlinkhome .hyper.js
 symlinkconfig fish
 symlinkconfig nvim
 
