@@ -34,10 +34,14 @@ Plug 'honza/vim-snippets'
 
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Initialize plugin system
 call plug#end()
 
 set encoding=utf8
+set relativenumber
 
 colorscheme dracula
 
@@ -337,3 +341,11 @@ autocmd! User GoyoLeave Limelight!
 let g:UltiSnipsSnippetDirectories=["UltiSnips","my_snippets"]
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
 let g:coc_disable_startup_warning = 1
+
+" AIRLINE CONFIGURATION
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
