@@ -17,7 +17,7 @@
 10. Hyper Config - [`.hyper.js`](.hyper.js)
 11. Tmux Config - [`.tmux.conf`](.tmux.conf)
 
-- Bash - `.bashrc` (not used)
+- Bash - [`.bashrc`](.bashrc) (not used)
 - Zshrc - Got deleted by mistake (Learn the fact that don't use `rm -rf` too much)
 
 ## Other Resources
