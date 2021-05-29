@@ -40,3 +40,4 @@
   pl = pull
   plo = pull origin
   plom = pull origin master
+	cl = clone
