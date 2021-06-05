@@ -9,3 +9,5 @@ export DJANGOPROJECT_DATA_DIR=~/.djangoproject
 
 # added by travis gem
 [ ! -s /Users/kavinvalli/.travis/travis.sh ] || source /Users/kavinvalli/.travis/travis.sh
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
