@@ -4,6 +4,11 @@
 1. `curl -s https://raw.githubusercontent.com/kavin25/.dotfiles/setup.sh | sh`
 2. Change Airtable URL CLI env vars - `cd ~/.dotfiles cp url-env-example.sh url-env.sh`
 
+## Dependency for some fish functions
+1. [dotco](https://github.com/someshkar/dotco)
+2. [Github CLI](https://cli.github.com/)
+    - Make sure to get `delete repo` permission by doing `gh auth login -s delete_repo` 
+
 ## Important Files / Directories
 1. Fish Directory - [`.config/fish`](.config/fish)
 2. Fish Config File - [`.config/fish/config.fish`](.config/fish/config.fish)
