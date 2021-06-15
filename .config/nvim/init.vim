@@ -21,6 +21,7 @@ Plug 'yuezk/vim-js'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'maxmellon/vim-jsx-pretty'
 
+Plug 'rust-lang/rust.vim'
 Plug 'elixir-editors/vim-elixir'
 
 Plug 'godlygeek/tabular'
@@ -44,6 +45,11 @@ set encoding=utf8
 set relativenumber
 
 colorscheme dracula
+" If you want a transparent background in neovim
+"highlight Normal ctermbg=none
+"highlight NonText ctermbg=none
+"au ColorScheme * hi Normal ctermbg=none guibg=none
+"au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
 
 " sync open file with NERDTree
 inoremap jk <ESC>
@@ -135,7 +141,8 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ 'coc-python',
-  \ 'coc-elixir'
+  \ 'coc-elixir',
+  \ 'coc-rls'
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
@@ -348,4 +355,4 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-
+let g:rustfmt_autosave = 1
