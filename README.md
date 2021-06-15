@@ -1,8 +1,15 @@
 # Kavin's .dotfiles
 
 ## Setup
-1. `curl -s https://raw.githubusercontent.com/kavin25/.dotfiles/master/setup.sh | sh`
-2. Change Airtable URL CLI env vars - `cd ~/.dotfiles cp url-env-example.sh url-env.sh`
+1. Install the following
+    - Fish Shell
+        - ohmyfish
+    - Neovim
+        - vim-plug
+    - Tmux
+        - tpm (Tmux Plugin manager)
+2. `curl -s https://raw.githubusercontent.com/kavin25/.dotfiles/master/setup.sh | sh`
+3. Change Airtable URL CLI env vars - `cd ~/.dotfiles cp url-env-example.sh url-env.sh`
 
 ## Dependency for some fish functions
 1. [dotco](https://github.com/someshkar/dotco)
