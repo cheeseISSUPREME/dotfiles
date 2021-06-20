@@ -9,7 +9,7 @@
     - Tmux
         - tpm (Tmux Plugin manager)
 2. `curl -s https://raw.githubusercontent.com/kavin25/.dotfiles/master/setup.sh | sh`
-3. Change Airtable URL CLI env vars - `cd ~/.dotfiles cp url-env-example.sh url-env.sh`
+3. Change Airtable URL CLI env vars - `cd ~/.dotfiles && cp url-env-example.sh url-env.sh`
 
 ## Dependency for some fish functions
 1. [dotco](https://github.com/someshkar/dotco)
