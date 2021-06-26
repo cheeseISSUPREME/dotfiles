@@ -10,7 +10,14 @@ switch (uname)
     source $HOME/.config/fish/linux.fish
   case Darwin
     set -x KAVIN_OS "MACOS"
-    source $HOME/.config/fish/macos.fish
+    switch (uname -m)
+      case x86_64
+        source $HOME/.config/fish/macos_intel.fish
+      case arm64
+        source $HOME/.config/fish/macos_m1.fish
+      case '*'
+        source $HOME/.config/fish/macos_intel.fish
+    end
   case '*'
     set -x KAVIN_OS "UNKNOWN"
 end
