@@ -12,7 +12,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -44,7 +46,7 @@ call plug#end()
 set encoding=utf8
 set relativenumber
 
-colorscheme dracula
+colorscheme spaceduck
 " If you want a transparent background in neovim
 "highlight Normal ctermbg=none
 "highlight NonText ctermbg=none
@@ -354,5 +356,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme = 'spaceduck'
 
 let g:rustfmt_autosave = 1

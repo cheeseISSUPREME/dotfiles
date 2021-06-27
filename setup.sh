@@ -34,6 +34,9 @@ backup .gitconfig
 backup .tmux.conf
 backup .config/fish
 backup .config/nvim
+backup .config/gh
+backup .config/neofetch
+backup .config/iterm-themes
 
 echo "cloning dotfiles repo...\n"
 git clone https://github.com/kavin25/.dotfiles .dotfiles
@@ -45,5 +48,6 @@ symlinkhome .tmux.conf
 symlinkhome .hyper.js
 symlinkconfig fish
 symlinkconfig nvim
+symlinkconfig iterm-themes
 
 echo "done"
