@@ -22,7 +22,10 @@ switch (uname)
     set -x KAVIN_OS "UNKNOWN"
 end
 
-set -U EDITOR "nvim"
+function fish_user_key_bindings
+  fish_vi_key_bindings
+  bind -M insert jk "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f backward-char force-repaint; end"
+end
 
 set GPG_TTY (tty)
 
@@ -36,14 +39,9 @@ set LC_ALL "en_US.UTF-8"
 set LC_CTYPE "en_US.UTF-8"
 
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
-
-# SpaceFish
-set SPACEFISH_USER_SHOW true
-set SPACEFISH_BATTERY_SHOW always
+set -U DOCKERFORMAT "ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
+set -U EDITOR "nvim"
 
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/url-env.sh
 
-set -U DOCKERFORMAT "ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH

@@ -1,33 +1,50 @@
-function fish_prompt
-	# Store the exit code of the last command
-	set -g sf_exit_code $status
-	set -g SPACEFISH_VERSION 2.7.0
+function fish_prompt --description 'Write out the prompt'
+    # Save our status
+    set -l last_pipestatus $pipestatus
 
-	# ------------------------------------------------------------------------------
-	# Configuration
-	# ------------------------------------------------------------------------------
+    set -l suffix
+    switch $fish_bind_mode
+      case default
+        set suffix '<<'
+      case insert
+        set suffix '>>'
+      case replace_one
+        set suffix '^'
+      case visual
+        set suffix 'V'
+      case '*'
+        echo '?'
+    end
 
-	__sf_util_set_default SPACEFISH_PROMPT_ADD_NEWLINE true
-	__sf_util_set_default SPACEFISH_PROMPT_FIRST_PREFIX_SHOW false
-	__sf_util_set_default SPACEFISH_PROMPT_PREFIXES_SHOW true
-	__sf_util_set_default SPACEFISH_PROMPT_SUFFIXES_SHOW true
-	__sf_util_set_default SPACEFISH_PROMPT_DEFAULT_PREFIX "via "
-	__sf_util_set_default SPACEFISH_PROMPT_DEFAULT_SUFFIX " "
-	__sf_util_set_default SPACEFISH_PROMPT_ORDER time user dir host git package node ruby golang php rust haskell julia elixir docker aws venv conda pyenv dotnet kubecontext exec_time line_sep battery vi_mode jobs exit_code char
+    set -g __fish_git_prompt_show_informative_status 1
+    set -g __fish_git_prompt_use_informative_chars 0
+    set -g __fish_git_prompt_color_branch "#e5c07b"
+    set -g __fish_git_prompt_showupstream "name"
+    set -g __fish_git_prompt_char_stateseparator " "
+    set -g __fish_git_prompt_showdirtystate "yes"
+    set -g __fish_git_prompt_color_stagedstate yellow
+    set -g __fish_git_prompt_color_invalidstate red
+    set -g __fish_git_prompt_color_cleanstate brgreen
 
-	# ------------------------------------------------------------------------------
-	# Sections
-	# ------------------------------------------------------------------------------
+    set -g __fish_git_prompt_char_upstream_ahead "^"
+    set -g __fish_git_prompt_char_upstream_behind "v"
+    set -g __fish_git_prompt_char_upstream_diverged "<>"
+    set -g __fish_git_prompt_char_upstream_equal "="
+    set -g __fish_git_prompt_char_untrackedfiles "..."
+    set -g __fish_git_prompt_char_stashstate "\$"
+    set -g __fish_git_prompt_char_dirtystate "*"
+    set -g __fish_git_prompt_char_invalidstate "#"
+    set -g __fish_git_prompt_char_stagedstate "+"
+    set -g __fish_git_prompt_char_cleanstate ""
 
-	# Keep track of whether the prompt has already been opened
-	set -g sf_prompt_opened $SPACEFISH_PROMPT_FIRST_PREFIX_SHOW
-
-	if test "$SPACEFISH_PROMPT_ADD_NEWLINE" = "true"
-		echo
-	end
-
-	for i in $SPACEFISH_PROMPT_ORDER
-		eval __sf_section_$i
-	end
-	set_color normal
+    # orange: e5c07b
+    # purple: d55fde
+    # blue:   52adf2
+    echo -n -s (set_color --bold e5c07b) "λ" (set_color normal) \
+        (set_color bbbbbb) " :: " \
+        (set_color d55fde) (prompt_pwd) (set_color bbbbbb) \
+        (__fish_git_prompt) \
+        (__fish_print_pipestatus " [" "]" "|" (set_color $fish_color_status) \
+        (set_color $fish_color_status) $last_pipestatus) " "\
+        (set_color --bold 52adf2) "$suffix " (set_color normal)
 end
