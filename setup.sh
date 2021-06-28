@@ -49,5 +49,6 @@ symlinkhome .hyper.js
 symlinkconfig fish
 symlinkconfig nvim
 symlinkconfig iterm-themes
+symlinkconfig neofetch
 
 echo "done"
