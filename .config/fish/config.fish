@@ -45,3 +45,4 @@ set -U EDITOR "nvim"
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/url-env.sh
 
+neofetch
