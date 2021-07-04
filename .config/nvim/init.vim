@@ -25,6 +25,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'rust-lang/rust.vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'fatih/vim-go'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -146,6 +147,8 @@ let g:coc_global_extensions = [
   \ 'coc-elixir',
   \ 'coc-rls'
   \ ]
+let g:go_def_mapping_enabled = 0
+
 " from readme
 " if hidden is not set, TextEdit might fail.
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
