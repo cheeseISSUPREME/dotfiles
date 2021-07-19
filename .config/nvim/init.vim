@@ -4,7 +4,7 @@ source $HOME/.config/nvim/autocmd.vim
 source $HOME/.config/nvim/plugins_conf.vim
 source $HOME/.config/nvim/keys.vim
 
-colorscheme spaceduck
+colorscheme nord
 " If you want a transparent background in neovim
 "highlight Normal ctermbg=none
 "highlight NonText ctermbg=none

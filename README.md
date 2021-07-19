@@ -94,8 +94,8 @@
 - [`fzf`](https://github.com/junegunn/fzf.vim)
 
 ### Theme
-I use Dracula in almost all of my setups
-- [`dracula/vim`](https://github.com/dracula/vim)
+I use Dracula in almost all of my setups but this setup uses Nord
+- [`nord-vim`](https://github.com/arcticicestudio/nord-vim)
 
 ### Others
 - Comment Code - [`nerdcommenter`](https://github.com/preservim/nerdcommenter)

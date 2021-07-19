@@ -13,7 +13,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'sheerun/vim-polyglot'
-Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+"Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'arcticicestudio/nord-vim', { 'branch': 'develop' }
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
