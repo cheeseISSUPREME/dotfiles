@@ -19,10 +19,10 @@ function dotrc
   if test (count $argv) -gt 0
     set query (__args_concatenate $argv[1] | xargs) 
     echo $query
-    set raw (find . | fzf --tac --print-query -1 -q $query --preview 'cat {}')
+    set raw (find . -not -path "./.git/*" | fzf --tac --print-query -1 -q $query --preview 'cat {}')
     set -e query
   else
-    set raw (find . | fzf --tac --print-query --preview 'cat {}')
+    set raw (find . -not -path "./.git/*" | fzf --tac --print-query --preview 'cat {}')
   end
   nvim $raw[2]
 end
