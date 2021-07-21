@@ -17,7 +17,7 @@ function dotrc
   __dotrc_pushd_dotfiles
   set raw ""
   if test (count $argv) -gt 0
-    set query (__args_concatenate $argv[1] | xargs) 
+    set query (__dotrc_concatenate $argv[1] | xargs) 
     echo $query
     set raw (find . -not -path "./.git/*" | fzf --tac --print-query -1 -q $query --preview 'cat {}')
     set -e query
