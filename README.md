@@ -42,7 +42,7 @@
 1. Code Completion
 2. Default and Custom Snippets
 3. LSP support for certain languages (can be added)
-4. Dracula Theme (can be changed)
+4. Framer Syntax Theme (can be changed)
 5. Fuzzy search files
 6. Seamless navigation between tmux panes and vim splits
 
@@ -94,8 +94,8 @@
 - [`fzf`](https://github.com/junegunn/fzf.vim)
 
 ### Theme
-I use Dracula in almost all of my setups but this setup uses Nord
-- [`nord-vim`](https://github.com/arcticicestudio/nord-vim)
+I use Dracula in almost all of my setups but this setup uses Framer Syntax
+- [`vim-framer-syntax`](https://github.com/balanceiskey/vim-framer-syntax)
 
 ### Others
 - Comment Code - [`nerdcommenter`](https://github.com/preservim/nerdcommenter)
