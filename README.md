@@ -12,6 +12,8 @@
 2. `curl -s https://raw.githubusercontent.com/kavin25/.dotfiles/master/setup.sh | sh`
 3. Change Airtable URL CLI env vars -
    `cd ~/.dotfiles && cp url-env-example.sh url-env.sh`
+4. Some [Nerd Font](https://github.com/ryanoasis/nerd-fonts) - I use
+   `Fira Code Nerd Font`
 
 ## Dependency for some fish functions
 
