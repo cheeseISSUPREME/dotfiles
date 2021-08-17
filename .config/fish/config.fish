@@ -45,7 +45,7 @@ set -U EDITOR "nvim"
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/url-env.sh
 
-neofetch
+#neofetch
 #colorscript random
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
