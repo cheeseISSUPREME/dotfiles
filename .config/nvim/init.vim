@@ -18,6 +18,13 @@ Plug 'luochen1990/rainbow'                              " rainbow parenthesis
 Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
+
+" ================ Nerdtree plugins ====================== "{{{
+Plug 'preservim/nerdtree'                               " tree file finder
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"}}}
 "}}}
 
 " ================= Functionalities ================= "{{{
@@ -314,6 +321,33 @@ endfunction
 
 "}}}
 
+" ======================== NERDTree Commands ===================== "{{{
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeDirArrows = 1
+" Automaticaly close nvim if NERDTree is only thing left open
+" Toggle
+
+let g:NERDTreeGitStatusWithFlags = 1
+"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+"let g:NERDTreeGitStatusNodeColorization = 1
+"let g:NERDTreeColorMapCustom = {
+    ""\ "Staged"    : "#0ee375",
+    ""\ "Modified"  : "#d9bf91",
+    ""\ "Renamed"   : "#51C9FC",
+    ""\ "Untracked" : "#FCE77C",
+    ""\ "Unmerged"  : "#FC51E6",
+    ""\ "Dirty"     : "#FFBD61",
+    ""\ "Clean"     : "#87939A",
+    ""\ "Ignored"   : "#808080"
+    ""\ }
+
+
+let g:NERDTreeIgnore = ['^node_modules$', '^package-lock.json$', '^.git$']
+"}}}
+
 " ======================== Custom Mappings ====================== "{{{
 
 "" the essentials
@@ -321,7 +355,7 @@ let mapleader=","
 nnoremap ; :
 nmap \ <leader>q
 map <F6> :Startify <CR>
-nmap <leader>r :so ~/.config/nvim/init.vim<CR>
+nmap <leader>r :source ~/.config/nvim/init.vim<CR>
 nmap <leader>q :bd<CR>
 nmap <leader>w :w<CR>
 map <leader>s :Format<CR>
@@ -329,6 +363,7 @@ nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 noremap <leader>e :PlugInstall<CR>
 noremap <C-q> :q<CR>
+inoremap jk <Esc>
 
 " new line in normal mode and back
 map <Enter> o<ESC>
@@ -425,6 +460,8 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
+" NERDTree
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 "}}}
 
 
