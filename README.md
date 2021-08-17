@@ -40,7 +40,7 @@
 
 ## Neovim
 
-Using https://github.com/Blacksuan19/init.nvim
+Using https://github.com/Blacksuan19/init.nvim with a little customization
 
 ## Other Resources
 
