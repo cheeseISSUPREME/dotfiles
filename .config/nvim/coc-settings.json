@@ -10,8 +10,12 @@
     "markdown",
     "typescript",
     "python",
-    "dart"
+    "dart",
+    "prisma",
+    "typescriptreact",
+    "typescript"
   ],
+  "prettier.tabWidth": 2,
 
   // suggest settings
   "suggest.noselect": false,
@@ -74,5 +78,13 @@
   // other language specific settings
   "html.autoClosingTags": true,
   "coc.source.ultisnips.filetypes": [],
-  "prettier.proseWrap": "always"
+  "prettier.proseWrap": "always",
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "edge": "html",
+    "javascript": "javascriptreact"
+  },
+
+  "prismaLanguageServer.prismaFmtBinPath": "",
+  "prisma.prismaFmtBinPath": ""
 }

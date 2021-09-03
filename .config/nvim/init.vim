@@ -22,7 +22,6 @@ Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 " ================ Nerdtree plugins ====================== "{{{
 Plug 'preservim/nerdtree'                               " tree file finder
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "}}}
 "}}}
@@ -44,6 +43,16 @@ Plug 'tpope/vim-eunuch'                                 " run common Unix comman
 Plug 'machakann/vim-sandwich'                           " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'jiangmiao/auto-pairs'
+
+" ================= LSP Functions ================= "{{{
+Plug 'yuezk/vim-js'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'watzon/vim-edge-template'
+
+Plug 'pantharshit00/vim-prisma'
 call plug#end()
 
 "}}}
@@ -53,7 +62,7 @@ call plug#end()
 set termguicolors                                       " Opaque Background
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamedplus                              " use system clipboard by default
-set tabstop=4 softtabstop=4 shiftwidth=4 autoindent     " tab width
+set tabstop=2 softtabstop=2 shiftwidth=2 autoindent     " tab width
 set expandtab smarttab                                  " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while searching
 set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
@@ -154,7 +163,17 @@ let g:coc_global_extensions = [
             \'coc-marketplace',
             \'coc-highlight',
             \'coc-sh',
+            \'coc-emmet',
+            \'coc-prisma',
             \]
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
 " indentLine
 let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
@@ -226,6 +245,8 @@ let g:fzf_tags_command = 'ctags -R'
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
 
+set re=0
+
 "}}}
 
 " ======================== Commands ============================= "{{{
@@ -285,6 +306,9 @@ command! -bang -nargs=? -complete=dir Files
 
 " advanced grep
 command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 "}}}
 
@@ -449,6 +473,7 @@ nmap gt <Plug>(coc-definition)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <leader>a <Plug>(coc-codeaction-line)
 xmap <leader>a <Plug>(coc-codeaction-selected)
+nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
 
 " fugitive mappings
 nmap <leader>gd :Gdiffsplit<CR>
