@@ -13,7 +13,10 @@
     "dart",
     "prisma",
     "typescriptreact",
-    "typescript"
+    "typescript",
+    "javascriptreact",
+    "php",
+    "vue"
   ],
   "prettier.tabWidth": 2,
 

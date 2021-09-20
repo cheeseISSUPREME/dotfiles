@@ -51,6 +51,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'watzon/vim-edge-template'
+Plug 'dag/vim-fish'
 
 Plug 'pantharshit00/vim-prisma'
 call plug#end()
