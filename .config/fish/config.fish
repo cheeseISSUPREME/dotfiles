@@ -33,6 +33,7 @@ fish_add_path /usr/local/bin
 fish_add_path /usr/local/bin/fish
 fish_add_path /usr/bin
 fish_add_path /usr/local/opt/util-linux/bin
+fish_add_path $HOME/.cargo/env
 
 set LANG "en_US.UTF-8"
 set LC_ALL "en_US.UTF-8"
