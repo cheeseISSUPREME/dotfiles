@@ -41,5 +41,6 @@
   plo = pull origin
   plom = pull origin master
   cl = clone
+  a = add
 [init]
 	defaultBranch = master

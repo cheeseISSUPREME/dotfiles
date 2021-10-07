@@ -52,6 +52,8 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'watzon/vim-edge-template'
 Plug 'dag/vim-fish'
+Plug 'yaegassy/coc-htmldjango', {'do': 'yarn install --frozen-lockfile'}
+Plug 'jparise/vim-graphql'
 
 Plug 'pantharshit00/vim-prisma'
 call plug#end()
@@ -72,6 +74,7 @@ set wrap breakindent                                    " wrap long lines to the
 set encoding=utf-8                                      " text encoding
 set number                                              " enable numbers on the left
 set relativenumber                                      " current line is 0
+Plug 'jparise/vim-graphql'
 set title                                               " tab title as file name
 set noshowmode                                          " dont show current mode below statusline
 set noshowcmd                                           " to get rid of display of last command
@@ -136,7 +139,7 @@ let g:omni_sql_no_default_maps = 1                      " disable sql omni compl
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
-let g:python3_host_prog = expand('/usr/bin/python3')
+let g:python3_host_prog = expand('/opt/homebrew/bin/python3')
 
 "" coc
 
@@ -166,6 +169,7 @@ let g:coc_global_extensions = [
             \'coc-sh',
             \'coc-emmet',
             \'coc-prisma',
+            \'coc-htmldjango',
             \]
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
