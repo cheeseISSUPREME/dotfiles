@@ -44,9 +44,10 @@
 
 Using https://github.com/Blacksuan19/init.nvim with a little customization
 
-## Other Resources
+## Credits
 
 1. [dotco](https://github.com/kavin25/dotco)
 2. [dotco-cli](https://github.com/kavin25/airtable-url-cli)
 3. [notes-cli](https://github.com/kavin25/.dotfiles/blob/master/.config/fish/functions/notes.fish) -
    @dotangad
+4. [Angad's Tmux Config](https://github.com/dotangad/dotfiles/blob/master/.tmux.conf)
