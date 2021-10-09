@@ -517,6 +517,7 @@ nmap <leader>gpo. :Git push origin
 nmap <leader>gplo. :Git pull origin
 nmap <leader>gpom :Git push origin master<CR>
 nmap <leader>gplom :Git pull origin master<CR>
+nmap <leader>g/ :GBrowse<CR>
 
 " tmux navigator
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
@@ -605,6 +606,19 @@ let g:which_key_map.g = {
       \'plo.': 'pull origin',
       \'pom': 'push origin master',
       \'plom': 'pull origin master',
+      \'/': 'browse',
+      \}
+
+let g:which_key_map.g.a = {
+      \'name': '+add'
+      \}
+
+let g:which_key_map.g.p = {
+      \'name': '+Push or Pull'
+      \}
+
+let g:which_key_map.g.c = {
+      \'name': '+commits'
       \}
 call which_key#register(',', "g:which_key_map")
 "}}}
