@@ -24,26 +24,34 @@ Plug 'preservim/nerdtree'                               " tree file finder
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "}}}
-"}}}
 
 " ================= Functionalities ================= "{{{
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
-Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
-Plug 'honza/vim-snippets'                               " actual snippets
-Plug 'Yggdroot/indentLine'                              " show indentation lines
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python
-Plug 'tpope/vim-commentary'                             " better commenting
-Plug 'mhinz/vim-startify'                               " cool start up screen
-Plug 'tpope/vim-fugitive'                               " git support
-Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
-Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
-Plug 'tpope/vim-eunuch'                                 " run common Unix commands inside Vim
-Plug 'machakann/vim-sandwich'                           " make sandwiches
-Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'jiangmiao/auto-pairs'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                           " LSP and more
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                       " fzf itself
+Plug 'junegunn/fzf.vim'                                                   " fuzzy search integration
+Plug 'honza/vim-snippets'                                                 " actual snippets
+Plug 'Yggdroot/indentLine'                                                " show indentation lines
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                    " better python
+Plug 'tpope/vim-commentary'                                               " better commenting
+Plug 'mhinz/vim-startify'                                                 " cool start up screen
+Plug 'psliwka/vim-smoothie'                                               " some very smooth ass scrolling
+Plug 'wellle/tmux-complete.vim'                                           " complete words from a tmux panes
+Plug 'tpope/vim-eunuch'                                                   " run common Unix commands inside Vim
+Plug 'machakann/vim-sandwich'                                             " make sandwiches
+Plug 'christoomey/vim-tmux-navigator'                                     " seamless vim and tmux navigation
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }  " preview markdown files
+Plug 'jiangmiao/auto-pairs'                                               " brackets auto pairing
+Plug 'kyazdani42/nvim-web-devicons'                                       " web devicons
+Plug 'romgrk/barbar.nvim'                                                 " tabs
+Plug 'liuchengxu/vim-which-key'                                           " keybinding
+"}}}
+
+" ================= Git Intergration ============== " {{{
+Plug 'tpope/vim-fugitive'                                                 " git support
+Plug 'tpope/vim-rhubarb'                                                  " hub support
+Plug 'junegunn/gv.vim'                                                    " git commit browser
+"}}}
 
 " ================= LSP Functions ================= "{{{
 Plug 'yuezk/vim-js'
@@ -54,8 +62,8 @@ Plug 'watzon/vim-edge-template'
 Plug 'dag/vim-fish'
 Plug 'yaegassy/coc-htmldjango', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jparise/vim-graphql'
-
 Plug 'pantharshit00/vim-prisma'
+"}}}
 call plug#end()
 
 "}}}
@@ -106,7 +114,7 @@ set hidden
 set nobackup
 set nowritebackup
 set cmdheight=1
-set updatetime=300
+set updatetime=500
 set shortmess+=c
 set signcolumn=yes
 
@@ -134,7 +142,7 @@ hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 " ======================== Plugin Configurations ======================== "{{{
 
 "" built in plugins
-let loaded_netrw = 0                                    " diable netew
+" let loaded_netrw = 1                                    " diable netew
 let g:omni_sql_no_default_maps = 1                      " disable sql omni completion
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
@@ -251,6 +259,7 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
 
 set re=0
+set timeoutlen=300
 
 "}}}
 
@@ -386,7 +395,7 @@ nmap \ <leader>q
 map <F6> :Startify <CR>
 nmap <leader>r :source ~/.config/nvim/init.vim<CR>
 nmap <leader>q :bd<CR>
-nmap <leader>w :w<CR>
+" nmap <leader>w :w<CR>
 map <leader>s :Format<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
@@ -404,10 +413,21 @@ vnoremap d "_d
 vnoremap p "_dP
 nnoremap x "_x
 
+
 " emulate windows copy, cut behavior
-vnoremap <LeftRelease> "+y<LeftRelease>
-vnoremap <C-c> "+y<CR>
+" vnoremap <LeftRelease> "+y<LeftRelease>
+" vnoremap <C-c> "+y<CR>
 vnoremap <C-x> "+d<CR>
+
+" window keybindings
+nnoremap <leader>w\| :vsplit<CR>
+nnoremap <leader>w- :split<CR>
+nnoremap <leader>w= <C-w>=
+nnoremap <leader>w+ <C-w>\|
+nnoremap <leader>w_ <C-w>_
+nnoremap <leader>wR <C-w>R
+nnoremap <leader>wv <C-w>t<C-w>H
+nnoremap <leader>wh <C-w>t<C-w>K
 
 " switch between splits using ctrl + {h,j,k,l}
 inoremap <C-h> <C-\><C-N><C-w>h
@@ -418,6 +438,11 @@ nnoremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+nnoremap <A-Left> :vertical resize +3<CR>
+nnoremap <A-Right> :vertical resize -3<CR>
+nnoremap <A-Up> :resize +3<CR>
+nnoremap <A-Down> :resize -3<CR>
 
 " disable hl with 2 esc
 noremap <silent><esc> <esc>:noh<CR><esc>
@@ -434,8 +459,6 @@ nmap <leader>b :Buffers<CR>
 nmap <leader>c :Commands<CR>
 nmap <leader>t :BTags<CR>
 nmap <leader>/ :Rg<CR>
-nmap <leader>gc :Commits<CR>
-nmap <leader>gs :GFiles?<CR>
 nmap <leader>sh :History/<CR>
 
 " show mapping on all modes with F1
@@ -468,11 +491,10 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>o :OR <CR>
 
 " jump stuff
-" nmap <leader>jd <Plug>(coc-definition)
+nmap <leader>jd <Plug>(coc-definition)
 nmap <leader>jy <Plug>(coc-type-definition)
 nmap <leader>ji <Plug>(coc-implementation)
 nmap <leader>jr <Plug>(coc-references)
-nmap gt <Plug>(coc-definition)
 
 " other coc actions
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -480,9 +502,21 @@ nmap <leader>a <Plug>(coc-codeaction-line)
 xmap <leader>a <Plug>(coc-codeaction-selected)
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
 
-" fugitive mappings
+" git mappings
+nmap <leader>gc :Commits<CR>
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Git blame<CR>
+nmap <leader>ga. :Git add
+nmap <leader>gap :Git add -p<CR>
+nmap <leader>gaa :Git add --all<CR>
+nmap <leader>gs :Git status<CR>
+nmap <leader>gcm :Git commit -m
+nmap <leader>gp. :Git push
+nmap <leader>gpl. :Git pull
+nmap <leader>gpo. :Git push origin
+nmap <leader>gplo. :Git pull origin
+nmap <leader>gpom :Git push origin master<CR>
+nmap <leader>gplom :Git pull origin master<CR>
 
 " tmux navigator
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
@@ -492,6 +526,87 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
 " NERDTree
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" Barbar
+" Move to previous/next
+nnoremap <silent>    <C-,> :BufferPrevious<CR>
+nnoremap <silent>    <C-.> :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <C-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <C->> :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <C-1> :BufferGoto 1<CR>
+nnoremap <silent>    <C-2> :BufferGoto 2<CR>
+nnoremap <silent>    <C-3> :BufferGoto 3<CR>
+nnoremap <silent>    <C-4> :BufferGoto 4<CR>
+nnoremap <silent>    <C-5> :BufferGoto 5<CR>
+nnoremap <silent>    <C-6> :BufferGoto 6<CR>
+nnoremap <silent>    <C-7> :BufferGoto 7<CR>
+nnoremap <silent>    <C-8> :BufferGoto 8<CR>
+nnoremap <silent>    <C-9> :BufferLast<CR>
+" Pin/unpin buffer
+nnoremap <silent>    <A-p> :BufferPin<CR>
+" Close buffer
+nnoremap <silent>    <C-c> :BufferClose<CR>
+" Wipeout buffer
+"                          :BufferWipeout<CR>
+" Close commands
+"                          :BufferCloseAllButCurrent<CR>
+"                          :BufferCloseAllButPinned<CR>
+"                          :BufferCloseBuffersLeft<CR>
+"                          :BufferCloseBuffersRight<CR>
+" Magic buffer-picking mode
+nnoremap <silent> <C-s>    :BufferPick<CR>
+" Sort automatically by...
+nnoremap <silent> <SpaCe>bb :BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
+nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
+nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
+
+" vim-which-key
+nnoremap <silent> <leader> :WhichKey ','<CR>
+vnoremap <silent> <leader> :WhichKeyVisual ','<CR>
+
+let g:which_key_map =  {}
+
+let g:which_key_map.j = {
+      \'name': '+lsp',
+      \'d': 'definition',
+      \'i': 'implementation',
+      \'r': 'references',
+      \'y': 'type-definitions',
+      \}
+
+let g:which_key_map.w = {
+      \'name': '+window',
+      \'|': 'vertical split',
+      \'-': 'horizontal split',
+      \'=': 'equal size split',
+      \'+': 'max our vertical split',
+      \'_': 'max out horizontal split',
+      \'R': 'swap panes',
+      \'h': 'switch to horizontal split',
+      \'v': 'switch to vertical split',
+      \}
+
+let g:which_key_map.g = {
+      \'name': '+git',
+      \'c': 'commits',
+      \'d': 'diff',
+      \'b': 'blame',
+      \'a.': 'add',
+      \'aa': 'add all',
+      \'ap': 'add chunks',
+      \'s': 'status',
+      \'cm': 'commit with message',
+      \'p.': 'push',
+      \'pl.': 'pull',
+      \'po.': 'push origin',
+      \'plo.': 'pull origin',
+      \'pom': 'push origin master',
+      \'plom': 'pull origin master',
+      \}
+call which_key#register(',', "g:which_key_map")
 "}}}
 
 
