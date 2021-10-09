@@ -503,7 +503,7 @@ xmap <leader>a <Plug>(coc-codeaction-selected)
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
 
 " git mappings
-nmap <leader>gc :Commits<CR>
+nmap <leader>gcs :Commits<CR>
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Git blame<CR>
 nmap <leader>ga. :Git add
@@ -591,7 +591,7 @@ let g:which_key_map.w = {
 
 let g:which_key_map.g = {
       \'name': '+git',
-      \'c': 'commits',
+      \'cs': 'commits',
       \'d': 'diff',
       \'b': 'blame',
       \'a.': 'add',
