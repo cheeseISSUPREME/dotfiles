@@ -1,5 +1,9 @@
 # Kavin's .dotfiles
 
+## Screenshots
+![Terminal Setup](https://user-images.githubusercontent.com/41034356/136644851-45d4d005-aad8-4e80-8397-2295d1ae9a73.png)
+
+
 ## Setup
 
 1. Install the following
