@@ -178,6 +178,7 @@ let g:coc_global_extensions = [
             \'coc-emmet',
             \'coc-prisma',
             \'coc-htmldjango',
+            \'coc-phpls',
             \]
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -532,8 +533,13 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
+function! ToggleNERDTree()
+  NERDTreeToggle
+  silent NERDTreeMirror
+endfunction
+
 " NERDTree
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+nnoremap <silent> <C-b> :call ToggleNERDTree()<CR>
 
 " Barbar
 " Move to previous/next
