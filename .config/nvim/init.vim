@@ -517,7 +517,7 @@ nmap <leader>ga. :Git add
 nmap <leader>gap :Git add -p<CR>
 nmap <leader>gaa :Git add --all<CR>
 nmap <leader>gs :Git status<CR>
-nmap <leader>gcm :Git commit -m
+nmap <leader>gcm :Git commit -m "
 nmap <leader>gp. :Git push
 nmap <leader>gpl. :Git pull
 nmap <leader>gpo. :Git push origin
