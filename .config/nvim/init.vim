@@ -462,7 +462,8 @@ nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 au FileType markdown nmap <leader>m :MarkdownPreview<CR>
 
 "" FZF
-nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>f :BLines<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>c :Commands<CR>
 nmap <leader>t :BTags<CR>
@@ -581,7 +582,14 @@ nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 nnoremap <silent> <leader> :WhichKey ','<CR>
 vnoremap <silent> <leader> :WhichKeyVisual ','<CR>
 
-let g:which_key_map =  {}
+let g:which_key_map =  {
+      \'p': 'fzf search file',
+      \'f': 'fzf search in file',
+      \'b': 'fzf buffers',
+      \'c': 'fzf commands',
+      \'/': 'fzf in file in projects',
+      \'sh': 'fzf commands in history'
+      \}
 
 let g:which_key_map.j = {
       \'name': '+lsp',
