@@ -19,10 +19,8 @@ Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 
-" ================ Nerdtree plugins ====================== "{{{
-Plug 'preservim/nerdtree'                               " tree file finder
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" ================ Tree =================================== "{{{
+Plug 'kyazdani42/nvim-tree.lua'
 "}}}
 
 " ================ Telescope plugins ====================== "{{{
@@ -36,7 +34,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}                           " LSP 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                       " fzf itself
 Plug 'junegunn/fzf.vim'                                                   " fuzzy search integration
 Plug 'honza/vim-snippets'                                                 " actual snippets
-Plug 'Yggdroot/indentLine'                                                " show indentation lines
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                    " better python
 Plug 'tpope/vim-commentary'                                               " better commenting
 Plug 'mhinz/vim-startify'                                                 " cool start up screen
@@ -49,7 +46,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }  " prev
 Plug 'jiangmiao/auto-pairs'                                               " brackets auto pairing
 Plug 'kyazdani42/nvim-web-devicons'                                       " web devicons
 Plug 'romgrk/barbar.nvim'                                                 " tabs
-Plug 'liuchengxu/vim-which-key'                                           " keybinding
+Plug 'folke/which-key.nvim'
 "}}}
 
 " ================= Git Intergration ============== " {{{
@@ -87,7 +84,6 @@ set wrap breakindent                                    " wrap long lines to the
 set encoding=utf-8                                      " text encoding
 set number                                              " enable numbers on the left
 set relativenumber                                      " current line is 0
-Plug 'jparise/vim-graphql'
 set title                                               " tab title as file name
 set noshowmode                                          " dont show current mode below statusline
 set noshowcmd                                           " to get rid of display of last command
@@ -184,6 +180,7 @@ let g:coc_global_extensions = [
             \'coc-prisma',
             \'coc-htmldjango',
             \'coc-phpls',
+            \'coc-lightbulb',
             \]
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -215,18 +212,18 @@ let g:startify_lists = [
 
 " bookmark examples
 let  g:startify_bookmarks =  [
-    \ {'v': '~/.config/nvim'},
+    \ {'c': '~/Code'},
     \ {'d': '~/.dotfiles' }
     \ ]
 
-" custom commands
-let g:startify_commands = [
-    \ {'ch':  ['Health Check', ':checkhealth']},
-    \ {'ps': ['Plugins status', ':PlugStatus']},
-    \ {'pu': ['Update vim plugins',':PlugUpdate | PlugUpgrade']},
-    \ {'uc': ['Update coc Plugins', ':CocUpdate']},
-    \ {'h':  ['Help', ':help']},
-    \ ]
+" " custom commands
+" let g:startify_commands = [
+"     \ {'ch':  ['Health Check', ':checkhealth']},
+"     \ {'ps': ['Plugins status', ':PlugStatus']},
+"     \ {'pu': ['Update vim plugins',':PlugUpdate | PlugUpgrade']},
+"     \ {'uc': ['Update coc Plugins', ':CocUpdate']},
+"     \ {'h':  ['Help', ':help']},
+"     \ ]
 
 " custom banner
 let g:startify_custom_header = [
@@ -330,13 +327,6 @@ command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
 "}}}
 
 " ================== Custom Functions ===================== "{{{
@@ -372,35 +362,42 @@ endfunction
 
 "}}}
 
-" ======================== NERDTree Commands ===================== "{{{
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeDirArrows = 1
-" Automaticaly close nvim if NERDTree is only thing left open
-" Toggle
-
-let g:NERDTreeGitStatusWithFlags = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-    ""\ "Staged"    : "#0ee375",
-    ""\ "Modified"  : "#d9bf91",
-    ""\ "Renamed"   : "#51C9FC",
-    ""\ "Untracked" : "#FCE77C",
-    ""\ "Unmerged"  : "#FC51E6",
-    ""\ "Dirty"     : "#FFBD61",
-    ""\ "Clean"     : "#87939A",
-    ""\ "Ignored"   : "#808080"
-    ""\ }
-
-
-let g:NERDTreeIgnore = ['^node_modules$', '^package-lock.json$', '^.git$']
-"}}}
 " ======================== Barbar Commands ===================== "{{{
 let bufferline = get(g:, 'bufferline', {})
 let bufferline.icon_pinned = '車'
+"}}}
+
+let g:which_key_use_floating_win = 1
+let g:which_key_hspace = 3
+let g:which_key_vertical = 0
+let g:which_key_position = 'topleft'
+
+" ======================== NvimTree Commands ===================== "{{{
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.DS_STORE' ]
+let g:nvim_tree_root_folder_modifier = ':t'
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': "",
+    \   'ignored': "◌"
+    \   },
+    \ 'folder': {
+    \   'arrow_open': "",
+    \   'arrow_closed': "",
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
 "}}}
 
 " ======================== Custom Mappings ====================== "{{{
@@ -475,7 +472,7 @@ nnoremap <silent> <leader>p :Telescope find_files<CR>
 nnoremap <silent> <leader>f :Telescope current_buffer_fuzzy_find<CR>
 nmap <leader>b :Telescope buffers<CR>
 nmap <leader>c :Telescope commands<CR>
-nmap <leader>t :BTags<CR>
+" nmap <leader>t :BTags<CR>
 nmap <leader>/ :Telescope live_grep<CR>
 nmap <leader>sh :Telescope command_history<CR>
 
@@ -506,7 +503,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " other stuff
 nmap <leader>rn <Plug>(coc-rename)
-nmap <leader>o :OR <CR>
+" nmap <leader>o :OR <CR>
 
 " jump stuff
 nmap <leader>jd <Plug>(coc-definition)
@@ -543,13 +540,9 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 
-function! ToggleNERDTree()
-  NERDTreeToggle
-  silent NERDTreeMirror
-endfunction
-
-" NERDTree
-nnoremap <silent> <C-b> :call ToggleNERDTree()<CR>
+nnoremap <C-b> :NvimTreeToggle<CR>
+nnoremap <leader>tr :NvimTreeRefresh<CR>
+nnoremap <leader>tf :NvimTreeFindFile<CR>
 
 " Barbar
 " Move to previous/next
@@ -582,79 +575,78 @@ nnoremap <silent>    <A-c> :BufferClose<CR>
 " Magic buffer-picking mode
 nnoremap <silent> <C-s>    :BufferPick<CR>
 " Sort automatically by...
-nnoremap <silent> <SpaCe>bb :BufferOrderByBufferNumber<CR>
+nnoremap <silent> <Space>bb :BufferOrderByBufferNumber<CR>
 nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
 nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 
-" vim-which-key
-nnoremap <silent> <leader> :WhichKey ','<CR>
-vnoremap <silent> <leader> :WhichKeyVisual ','<CR>
+" " vim-which-key
+" nnoremap <silent> <leader> :WhichKey ','<CR>
+" vnoremap <silent> <leader> :WhichKeyVisual ','<CR>
 
-let g:which_key_map =  {
-      \'p': 'fzf search file',
-      \'f': 'fzf search in file',
-      \'b': 'fzf buffers',
-      \'c': 'fzf commands',
-      \'/': 'fzf in file in projects',
-      \'sh': 'fzf commands in history'
-      \}
+" let g:which_key_map =  {
+"       \'p': 'fzf search file',
+"       \'f': 'fzf search in file',
+"       \'b': 'fzf buffers',
+"       \'c': 'fzf commands',
+"       \'/': 'fzf in file in projects',
+"       \'sh': 'fzf commands in history'
+"       \}
 
-let g:which_key_map.j = {
-      \'name': '+lsp',
-      \'d': 'definition',
-      \'i': 'implementation',
-      \'r': 'references',
-      \'y': 'type-definitions',
-      \}
+" let g:which_key_map.j = {
+"       \'name': '+lsp',
+"       \'d': 'definition',
+"       \'i': 'implementation',
+"       \'r': 'references',
+"       \'y': 'type-definitions',
+"       \}
 
-let g:which_key_map.w = {
-      \'name': '+window',
-      \'|': 'vertical split',
-      \'-': 'horizontal split',
-      \'=': 'equal size split',
-      \'+': 'max our vertical split',
-      \'_': 'max out horizontal split',
-      \'R': 'swap panes',
-      \'h': 'switch to horizontal split',
-      \'v': 'switch to vertical split',
-      \}
+" let g:which_key_map.w = {
+"       \'name': '+window',
+"       \'|': 'vertical split',
+"       \'-': 'horizontal split',
+"       \'=': 'equal size split',
+"       \'+': 'max our vertical split',
+"       \'_': 'max out horizontal split',
+"       \'R': 'swap panes',
+"       \'h': 'switch to horizontal split',
+"       \'v': 'switch to vertical split',
+"       \}
 
-let g:which_key_map.g = {
-      \'name': '+git',
-      \'cs': 'commits',
-      \'d': 'diff',
-      \'b': 'blame',
-      \'a.': 'add',
-      \'aa': 'add all',
-      \'ap': 'add chunks',
-      \'s': 'status',
-      \'cm': 'commit with message',
-      \'p.': 'push',
-      \'pl.': 'pull',
-      \'po.': 'push origin',
-      \'plo.': 'pull origin',
-      \'pom': 'push origin master',
-      \'plom': 'pull origin master',
-      \'/': 'browse',
-      \}
+" let g:which_key_map.g = {
+"       \'name': '+git',
+"       \'cs': 'commits',
+"       \'d': 'diff',
+"       \'b': 'blame',
+"       \'a.': 'add',
+"       \'aa': 'add all',
+"       \'ap': 'add chunks',
+"       \'s': 'status',
+"       \'cm': 'commit with message',
+"       \'p.': 'push',
+"       \'pl.': 'pull',
+"       \'po.': 'push origin',
+"       \'plo.': 'pull origin',
+"       \'pom': 'push origin master',
+"       \'plom': 'pull origin master',
+"       \'/': 'browse',
+"       \}
 
-let g:which_key_map.g.a = {
-      \'name': '+add'
-      \}
+" let g:which_key_map.g.a = {
+"       \'name': '+add'
+"       \}
 
-let g:which_key_map.g.p = {
-      \'name': '+Push or Pull'
-      \}
+" let g:which_key_map.g.p = {
+"       \'name': '+Push or Pull'
+"       \}
 
-let g:which_key_map.g.c = {
-      \'name': '+commits'
-      \}
-call which_key#register(',', "g:which_key_map")
+" let g:which_key_map.g.c = {
+"       \'name': '+commits'
+"       \}
+" call which_key#register(',', "g:which_key_map")
 "}}}
-
-
 " ======================== Additional sourcing ====================== "{{{
 source ~/.config/nvim/statusline.vim
-
+source ~/.config/nvim/nvim-tree.vim
+source ~/.config/nvim/which-key.vim
 "}}}
