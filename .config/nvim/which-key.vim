@@ -80,7 +80,8 @@ require("which-key").register({
     d = "Diff",
     b = "Blame",
     s = "Status",
-    ["/"] = "Browse"
+    ["/"] = "Browse the file at the state (commit)",
+    [","] = "Browse the repo",
   },
   b = {
     name = "Browser",

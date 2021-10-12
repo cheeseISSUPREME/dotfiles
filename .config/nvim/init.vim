@@ -538,6 +538,7 @@ nmap <leader>gplo. :Git pull origin<Space>
 nmap <leader>gpom :Git push origin master<CR>
 nmap <leader>gplom :Git pull origin master<CR>
 nmap <leader>g/ :GBrowse<CR>
+nmap <leader>g, :! cd (pwd) && gh repo view --web <CR>
 
 " tmux navigator
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
