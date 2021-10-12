@@ -25,6 +25,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "}}}
 
+" ================ Telescope plugins ====================== "{{{
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+"}}}
+
 " ================= Functionalities ================= "{{{
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                           " LSP and more
@@ -466,13 +471,13 @@ nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 au FileType markdown nmap <leader>m :MarkdownPreview<CR>
 
 "" FZF
-nnoremap <silent> <leader>p :Files<CR>
-nnoremap <silent> <leader>f :BLines<CR>
-nmap <leader>b :Buffers<CR>
-nmap <leader>c :Commands<CR>
+nnoremap <silent> <leader>p :Telescope find_files<CR>
+nnoremap <silent> <leader>f :Telescope current_buffer_fuzzy_find<CR>
+nmap <leader>b :Telescope buffers<CR>
+nmap <leader>c :Telescope commands<CR>
 nmap <leader>t :BTags<CR>
-nmap <leader>/ :Rg<CR>
-nmap <leader>sh :History/<CR>
+nmap <leader>/ :Telescope live_grep<CR>
+nmap <leader>sh :Telescope command_history<CR>
 
 " show mapping on all modes with F1
 nmap <F1> <plug>(fzf-maps-n)
@@ -522,7 +527,7 @@ nmap <leader>gb :Git blame<CR>
 nmap <leader>ga. :Git add
 nmap <leader>gap :Git add -p<CR>
 nmap <leader>gaa :Git add --all<CR>
-nmap <leader>gs :Git status<CR>
+nmap <leader>gs :Telescope git_status<CR>
 nmap <leader>gcm :Git commit -m "
 nmap <leader>gp. :Git push
 nmap <leader>gpl. :Git pull
