@@ -1,3 +1,6 @@
+" This config file was taken from https://github.com/Blacksuan19/init.nvim
+" A lot has been changed since then according to my own needs
+
 " ============= Vim-Plug ============== "{{{
 
 " auto-install vim-plug
@@ -66,6 +69,8 @@ Plug 'yaegassy/coc-htmldjango', {'do': 'yarn install --frozen-lockfile'}
 Plug 'jparise/vim-graphql'
 Plug 'pantharshit00/vim-prisma'
 "}}}
+
+Plug 'tyru/open-browser.vim'
 call plug#end()
 
 "}}}
@@ -470,7 +475,7 @@ au FileType markdown nmap <leader>m :MarkdownPreview<CR>
 "" FZF
 nnoremap <silent> <leader>p :Telescope find_files<CR>
 nnoremap <silent> <leader>f :Telescope current_buffer_fuzzy_find<CR>
-nmap <leader>b :Telescope buffers<CR>
+" nmap <leader>b :Telescope buffers<CR>
 nmap <leader>c :Telescope commands<CR>
 " nmap <leader>t :BTags<CR>
 nmap <leader>/ :Telescope live_grep<CR>
@@ -521,15 +526,15 @@ nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call co
 nmap <leader>gcs :Commits<CR>
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Git blame<CR>
-nmap <leader>ga. :Git add
+nmap <leader>ga. :Git add<Space>
 nmap <leader>gap :Git add -p<CR>
 nmap <leader>gaa :Git add --all<CR>
 nmap <leader>gs :Telescope git_status<CR>
 nmap <leader>gcm :Git commit -m "
-nmap <leader>gp. :Git push
-nmap <leader>gpl. :Git pull
-nmap <leader>gpo. :Git push origin
-nmap <leader>gplo. :Git pull origin
+nmap <leader>gp. :Git push<Space>
+nmap <leader>gpl. :Git pull<Space>
+nmap <leader>gpo. :Git push origin<Space>
+nmap <leader>gplo. :Git pull origin<Space>
 nmap <leader>gpom :Git push origin master<CR>
 nmap <leader>gplom :Git pull origin master<CR>
 nmap <leader>g/ :GBrowse<CR>
@@ -580,73 +585,22 @@ nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
 nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
 nnoremap <silent> <Space>bw :BufferOrderByWindowNumber<CR>
 
-" " vim-which-key
-" nnoremap <silent> <leader> :WhichKey ','<CR>
-" vnoremap <silent> <leader> :WhichKeyVisual ','<CR>
+" ======================== Browser ========================= "{{{
+nmap <silent> <leader>bu <Plug>(openbrowser-open)
+vmap <silent> <leader>bu <Plug>(openbrowser-open)
 
-" let g:which_key_map =  {
-"       \'p': 'fzf search file',
-"       \'f': 'fzf search in file',
-"       \'b': 'fzf buffers',
-"       \'c': 'fzf commands',
-"       \'/': 'fzf in file in projects',
-"       \'sh': 'fzf commands in history'
-"       \}
+nmap <silent> <leader>bw <Plug>(openbrowser-search)
+vmap <silent> <leader>bw <Plug>(openbrowser-search)
 
-" let g:which_key_map.j = {
-"       \'name': '+lsp',
-"       \'d': 'definition',
-"       \'i': 'implementation',
-"       \'r': 'references',
-"       \'y': 'type-definitions',
-"       \}
+nmap <silent> <leader>bb <Plug>(openbrowser-smart-search)
+vmap <silent> <leader>bb <Plug>(openbrowser-smart-search)
 
-" let g:which_key_map.w = {
-"       \'name': '+window',
-"       \'|': 'vertical split',
-"       \'-': 'horizontal split',
-"       \'=': 'equal size split',
-"       \'+': 'max our vertical split',
-"       \'_': 'max out horizontal split',
-"       \'R': 'swap panes',
-"       \'h': 'switch to horizontal split',
-"       \'v': 'switch to vertical split',
-"       \}
-
-" let g:which_key_map.g = {
-"       \'name': '+git',
-"       \'cs': 'commits',
-"       \'d': 'diff',
-"       \'b': 'blame',
-"       \'a.': 'add',
-"       \'aa': 'add all',
-"       \'ap': 'add chunks',
-"       \'s': 'status',
-"       \'cm': 'commit with message',
-"       \'p.': 'push',
-"       \'pl.': 'pull',
-"       \'po.': 'push origin',
-"       \'plo.': 'pull origin',
-"       \'pom': 'push origin master',
-"       \'plom': 'pull origin master',
-"       \'/': 'browse',
-"       \}
-
-" let g:which_key_map.g.a = {
-"       \'name': '+add'
-"       \}
-
-" let g:which_key_map.g.p = {
-"       \'name': '+Push or Pull'
-"       \}
-
-" let g:which_key_map.g.c = {
-"       \'name': '+commits'
-"       \}
-" call which_key#register(',', "g:which_key_map")
+nmap <silent> <leader>b. :OpenBrowserSmartSearch<Space>
 "}}}
+
 " ======================== Additional sourcing ====================== "{{{
 source ~/.config/nvim/statusline.vim
 source ~/.config/nvim/nvim-tree.vim
 source ~/.config/nvim/which-key.vim
 "}}}
+

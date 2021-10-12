@@ -82,6 +82,13 @@ require("which-key").register({
     s = "Status",
     ["/"] = "Browse"
   },
+  b = {
+    name = "Browser",
+    u = "Open URL",
+    w = "Search word / sentence",
+    b = "Smart Search URL / word / sentence",
+    ["."] = "Search as a vim command"
+  },
   t = {
     name = "Nvim Tree",
     r = "Refresh",
