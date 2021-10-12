@@ -393,6 +393,10 @@ let g:NERDTreeGitStatusWithFlags = 1
 
 let g:NERDTreeIgnore = ['^node_modules$', '^package-lock.json$', '^.git$']
 "}}}
+" ======================== Barbar Commands ===================== "{{{
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.icon_pinned = '車'
+"}}}
 
 " ======================== Custom Mappings ====================== "{{{
 
@@ -544,25 +548,25 @@ nnoremap <silent> <C-b> :call ToggleNERDTree()<CR>
 
 " Barbar
 " Move to previous/next
-nnoremap <silent>    <C-,> :BufferPrevious<CR>
-nnoremap <silent>    <C-.> :BufferNext<CR>
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
 " Re-order to previous/next
-nnoremap <silent>    <C-<> :BufferMovePrevious<CR>
-nnoremap <silent>    <C->> :BufferMoveNext<CR>
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
 " Goto buffer in position...
-nnoremap <silent>    <C-1> :BufferGoto 1<CR>
-nnoremap <silent>    <C-2> :BufferGoto 2<CR>
-nnoremap <silent>    <C-3> :BufferGoto 3<CR>
-nnoremap <silent>    <C-4> :BufferGoto 4<CR>
-nnoremap <silent>    <C-5> :BufferGoto 5<CR>
-nnoremap <silent>    <C-6> :BufferGoto 6<CR>
-nnoremap <silent>    <C-7> :BufferGoto 7<CR>
-nnoremap <silent>    <C-8> :BufferGoto 8<CR>
-nnoremap <silent>    <C-9> :BufferLast<CR>
-" Pin/unpin buffer
-nnoremap <silent>    <A-p> :BufferPin<CR>
+nnoremap <silent>    <A-1> :BufferGoto 1<CR>
+nnoremap <silent>    <A-2> :BufferGoto 2<CR>
+nnoremap <silent>    <A-3> :BufferGoto 3<CR>
+nnoremap <silent>    <A-4> :BufferGoto 4<CR>
+nnoremap <silent>    <A-5> :BufferGoto 5<CR>
+nnoremap <silent>    <A-6> :BufferGoto 6<CR>
+nnoremap <silent>    <A-7> :BufferGoto 7<CR>
+nnoremap <silent>    <A-8> :BufferGoto 8<CR>
+nnoremap <silent>    <A-9> :BufferLast<CR>
+" Pin/unpin buffer - alt+p
+nnoremap <A-g> :BufferPin<CR>
 " Close buffer
-nnoremap <silent>    <C-c> :BufferClose<CR>
+nnoremap <silent>    <A-c> :BufferClose<CR>
 " Wipeout buffer
 "                          :BufferWipeout<CR>
 " Close commands
