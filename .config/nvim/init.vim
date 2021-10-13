@@ -124,6 +124,8 @@ set updatetime=500
 set shortmess+=c
 set signcolumn=yes
 
+set foldmethod=marker foldlevel=0:
+
 " Themeing
 let g:material_style = 'oceanic'
 colorscheme vim-material
@@ -331,6 +333,7 @@ command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx " To make vim-commentary work in tsx files
 
 "}}}
 
