@@ -1,3 +1,10 @@
+let g:which_key_use_floating_win = 1
+let g:which_key_hspace = 3
+let g:which_key_vertical = 0
+let g:which_key_position = 'topleft'
+set re=0
+set timeoutlen=300
+
 lua << EOF
 require("which-key").setup {
   plugins = {
