@@ -12,13 +12,13 @@ function! StartifyEntryFormat()
 endfunction
 
 " check if last inserted char is a backspace (used by coc pmenu)
-function! s:check_back_space() abort
+function! g:CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " show docs on things with K
-function! s:show_documentation()
+function! g:ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else

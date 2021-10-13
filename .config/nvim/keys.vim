@@ -46,7 +46,8 @@ nnoremap <A-Down> :resize -3<CR>
 nnoremap <silent> <leader>p :lua require("telescope.builtin").find_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } })<CR>
 nnoremap <silent> <leader>f :Telescope current_buffer_fuzzy_find<CR>
 nmap <leader>c :Telescope commands<CR>
-nmap <leader>/ :Telescope live_grep<CR>
+" nmap <leader>/ :Telescope live_grep<CR>
+nmap <leader>/ :lua require("telescope.builtin").live_grep({ vimgrep_arguments = { 'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case', '-u', '--hidden' } })<CR>
 nmap <leader>sh :Telescope command_history<CR>
 nmap <F1> <plug>(fzf-maps-n)
 imap <F1> <plug>(fzf-maps-i)
