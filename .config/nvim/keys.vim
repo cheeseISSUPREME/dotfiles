@@ -1,32 +1,23 @@
-" ======================== Window Management ========================= "{{{
+" ======================== Essentials ========================= "{{{
 let mapleader=","
 nnoremap ; :
 nmap \ <leader>q
 map <F6> :Startify <CR>
 nmap <leader>r :source ~/.config/nvim/init.vim<CR>
 nmap <leader>q :bd<CR>
-" nmap <leader>w :w<CR>
+nmap <leader>w :w<CR>
 map <leader>s :Format<CR>
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
 noremap <leader>e :PlugInstall<CR>
 noremap <C-q> :q<CR>
 inoremap jk <Esc>
+inoremap kj <Esc>
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
+noremap <silent><esc> <esc>:noh<CR><esc> " disable hl with two escapes
+nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR> " trim white space
 "}}}
-
-" " use a different register for delete and paste
-" nnoremap d "_d
-" vnoremap d "_d
-" vnoremap p "_dP
-" nnoremap x "_x
-
-
-" " emulate windows copy, cut behavior
-" " vnoremap <LeftRelease> "+y<LeftRelease>
-" " vnoremap <C-c> "+y<CR>
-" vnoremap <C-x> "+d<CR>
 
 " ======================== Window Management ========================= "{{{
 nnoremap <leader>w\| :vsplit<CR>
@@ -51,17 +42,8 @@ nnoremap <A-Up> :resize +3<CR>
 nnoremap <A-Down> :resize -3<CR>
 "}}}
 
-" disable hl with 2 esc
-noremap <silent><esc> <esc>:noh<CR><esc>
-
-" trim white spaces
-nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-
-" markdown preview
-au FileType markdown nmap <leader>m :MarkdownPreview<CR>
-
 " ======================== Fuzzy Search ========================= "{{{
-nnoremap <silent> <leader>p :Telescope find_files<CR>
+nnoremap <silent> <leader>p :lua require("telescope.builtin").find_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } })<CR>
 nnoremap <silent> <leader>f :Telescope current_buffer_fuzzy_find<CR>
 nmap <leader>c :Telescope commands<CR>
 nmap <leader>/ :Telescope live_grep<CR>
@@ -138,4 +120,6 @@ vmap <silent> <leader>bb <Plug>(openbrowser-smart-search)
 
 nmap <silent> <leader>b. :OpenBrowserSmartSearch<Space>
 "}}}
+
+au FileType markdown nmap <leader>m :MarkdownPreview<CR>
 
