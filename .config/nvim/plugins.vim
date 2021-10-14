@@ -16,6 +16,7 @@ Plug 'luochen1990/rainbow'                              " rainbow parenthesis
 Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
+Plug 'olimorris/onedark.nvim'                           " one dark them
 "}}}
 
 " ================ Tree =================================== "{{{
@@ -47,6 +48,7 @@ Plug 'kyazdani42/nvim-web-devicons'                                       " web 
 Plug 'romgrk/barbar.nvim'                                                 " tabs
 Plug 'folke/which-key.nvim'
 Plug 'tyru/open-browser.vim'
+Plug 'andweeb/presence.nvim'                                              " discord presence
 "}}}
 
 " ================= Git Intergration ============== " {{{

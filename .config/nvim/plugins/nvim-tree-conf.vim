@@ -101,4 +101,21 @@ require'nvim-tree'.setup {
     }
   }
 }
+
+local tree_view = require "nvim-tree.view"
+
+local open = tree_view.open
+tree_view.open = function()
+  require'bufferline.state'.set_offset(31, 'FileTree')
+  open()
+end
+
+vim.cmd "au WinClosed * lua nvim_tree_on_close()"
+
+function _G.nvim_tree_on_close()
+   require'bufferline.state'.set_offset(0)
+   require'nvim-tree'.close()
+end
+
 EOF
+

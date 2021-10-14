@@ -81,7 +81,7 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 "}}}
 
 " ======================== Nvim Tree ========================= "{{{
-nnoremap <C-b> :NvimTreeToggle<CR>
+nnoremap <silent> <C-b> :NvimTreeToggle<CR>
 nnoremap <leader>tr :NvimTreeRefresh<CR>
 nnoremap <leader>tf :NvimTreeFindFile<CR>
 "}}}

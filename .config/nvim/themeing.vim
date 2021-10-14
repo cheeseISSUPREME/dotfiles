@@ -1,5 +1,5 @@
-let g:material_style = 'oceanic'
-colorscheme vim-material
+" let g:material_style = 'oceanic'
+colorscheme onedark
 hi Pmenu guibg='#00010a' guifg=white                    " popup menu colors
 hi Comment gui=italic cterm=italic                      " italic comments
 hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE          " search string highlight color

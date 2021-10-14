@@ -5,7 +5,6 @@ source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/themeing.vim
 source ~/.config/nvim/functions.vim
 source ~/.config/nvim/general-settings.vim
-source ~/.config/nvim/keys.vim
 source ~/.config/nvim/commands.vim
 source ~/.config/nvim/plugins/default.vim
 source ~/.config/nvim/plugins/startify-conf.vim
@@ -18,4 +17,5 @@ source ~/.config/nvim/plugins/statusline.vim
 source ~/.config/nvim/plugins/nvim-tree-conf.vim
 source ~/.config/nvim/plugins/which-key-conf.vim
 source ~/.config/nvim/plugins/barbar-conf.vim
+source ~/.config/nvim/keys.vim
 
